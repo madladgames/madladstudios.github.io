@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mad Lad Studios - Games made by a kid, for kids</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR-PUBLISHER-ID"
+         crossorigin="anonymous"></script>
+    
+    <style>
+        /* Custom animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .game-card:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .game-card {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-600 via-pink-500 to-red-500 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-sm shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+                    Mad Lad Studios
+                </a>
+                <div class="flex space-x-6">
+                    <a href="#games" class="text-gray-700 hover:text-purple-600 font-medium transition">Games</a>
+                    <a href="#about" class="text-gray-700 hover:text-purple-600 font-medium transition">About</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="container mx-auto px-4 py-16 text-center">
+        <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 float-animation">
+            Welcome to Mad Lad Studios!
+        </h1>
+        <p class="text-2xl md:text-3xl text-white/90 mb-8">
+            Games made by a kid, for kids.
+        </p>
+        <div class="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3">
+            <span class="text-yellow-300 text-2xl">🎮</span>
+            <span class="text-white font-medium">Play Fun Games Below!</span>
+            <span class="text-yellow-300 text-2xl">🎮</span>
+        </div>
+    </section>
+
+    <!-- Ad Space -->
+    <section class="container mx-auto px-4 py-8">
+        <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
+            <!-- Google AdSense Ad Unit -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR-PUBLISHER-ID"
+                 data-ad-slot="YOUR-AD-SLOT-ID"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section id="games" class="container mx-auto px-4 py-16">
+        <h2 class="text-4xl font-bold text-white text-center mb-12">Our Awesome Games</h2>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Mad Car Game -->
+            <div class="game-card bg-white rounded-xl shadow-2xl overflow-hidden">
+                <div class="bg-gradient-to-r from-blue-500 to-cyan-500 p-6">
+                    <div class="text-6xl text-center mb-4">🚗</div>
+                    <h3 class="text-2xl font-bold text-white text-center">Mad Car Game</h3>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-700 mb-6">
+                        Jump over obstacles in this exciting car adventure! Test your reflexes and see how far you can go!
+                    </p>
+                    <a href="mad-car-game.html" class="block w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-center py-3 rounded-lg font-bold hover:from-blue-600 hover:to-cyan-600 transition">
+                        Play Now!
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mad Crab Game -->
+            <div class="game-card bg-white rounded-xl shadow-2xl overflow-hidden">
+                <div class="bg-gradient-to-r from-orange-500 to-red-500 p-6">
+                    <div class="text-6xl text-center mb-4">🦀</div>
+                    <h3 class="text-2xl font-bold text-white text-center">Mad Crab Game</h3>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-700 mb-6">
+                        Help the crab collect pearls while avoiding dangerous sharks! How many levels can you complete?
+                    </p>
+                    <a href="mad-crab-game.html" class="block w-full bg-gradient-to-r from-orange-500 to-red-500 text-white text-center py-3 rounded-lg font-bold hover:from-orange-600 hover:to-red-600 transition">
+                        Play Now!
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mad Racetrack Game -->
+            <div class="game-card bg-white rounded-xl shadow-2xl overflow-hidden">
+                <div class="bg-gradient-to-r from-green-500 to-emerald-500 p-6">
+                    <div class="text-6xl text-center mb-4">🏁</div>
+                    <h3 class="text-2xl font-bold text-white text-center">Mad Racetrack Game</h3>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-700 mb-6">
+                        Race around the track at high speeds! Use your steering skills to stay on course and set records!
+                    </p>
+                    <a href="mad-racetrack-game.html" class="block w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white text-center py-3 rounded-lg font-bold hover:from-green-600 hover:to-emerald-600 transition">
+                        Play Now!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Space -->
+    <section class="container mx-auto px-4 py-8">
+        <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center">
+            <!-- Google AdSense Ad Unit -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR-PUBLISHER-ID"
+                 data-ad-slot="YOUR-AD-SLOT-ID-2"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container mx-auto px-4 py-16">
+        <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-8 md:p-12 max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
+                About Mad Lad Studios
+            </h2>
+            <p class="text-gray-700 text-lg leading-relaxed mb-6">
+                Welcome to Mad Lad Studios! We create fun and exciting games that kids love to play. 
+                Our games are designed to be entertaining, challenging, and safe for players of all ages.
+            </p>
+            <p class="text-gray-700 text-lg leading-relaxed">
+                Each game is crafted with care to provide hours of entertainment. Whether you're jumping 
+                over obstacles, collecting treasures, or racing at high speeds, there's always something 
+                fun to do at Mad Lad Studios!
+            </p>
+            <div class="mt-8 text-center">
+                <span class="inline-block text-6xl">🎮</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <p class="mb-2">© 2025 Mad Lad Studios. All rights reserved.</p>
+            <p class="text-gray-400">Games made by a kid, for kids.</p>
+        </div>
+    </footer>
+</body>
+</html>

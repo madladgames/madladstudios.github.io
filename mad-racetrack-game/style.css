@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: white;
+}
+
+.game-container {
+    text-align: center;
+}
+
+#gameCanvas {
+    border: 2px solid #444;
+    background-color: #000;
+    display: block;
+    margin: 0 auto;
+}
+
+.game-info {
+    margin-bottom: 20px;
+}
+
+.game-info h1 {
+    margin: 10px 0;
+    color: #ff6b6b;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.game-info p {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+#speed {
+    color: #4ecdc4;
+    font-weight: bold;
+}
