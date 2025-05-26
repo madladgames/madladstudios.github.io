@@ -24,7 +24,7 @@ const car = {
 };
 
 // Game physics
-const gravity = 0.8;
+const gravity = 0.684;  // Reduced by 15% total to make jumps last longer
 const jumpPower = -15;
 const groundY = 300;
 
@@ -36,7 +36,8 @@ let jumpAttemptTimer = 0;
 let obstacles = [];
 const obstacleSpeed = 5;
 let obstacleTimer = 0;
-const obstacleInterval = 100;
+const obstacleInterval = 150;  // Increased interval between obstacles
+const obstacleStartDelay = 100;  // Delay before first obstacle
 
 // Background elements
 let clouds = [];
@@ -69,16 +70,7 @@ function initBackground() {
 
 // Draw functions
 function drawCar() {
-    // Visual feedback when jump is attempted
-    if (jumpAttempted && jumpAttemptTimer > 0) {
-        ctx.strokeStyle = '#00FF00';
-        ctx.lineWidth = 3;
-        ctx.strokeRect(car.x - 5, car.y - 5, car.width + 10, car.height + 10);
-        jumpAttemptTimer--;
-        if (jumpAttemptTimer <= 0) {
-            jumpAttempted = false;
-        }
-    }
+    // Visual feedback removed - no green box when jumping
     
     // Digger main body (yellow)
     ctx.fillStyle = car.color;
@@ -227,25 +219,23 @@ function drawObstacle(obstacle) {
 
 // Game mechanics
 function updateCar() {
+    // Update position first
+    car.y += car.velocityY;
+    
     // Apply gravity
     if (car.y < groundY - car.height) {
         car.velocityY += gravity;
-    } else {
+        car.jumping = true;
+    } else if (car.velocityY >= 0) {
+        // Only clamp to ground if falling or stationary (not jumping up)
         car.y = groundY - car.height;
         car.velocityY = 0;
         car.jumping = false;
     }
-    
-    // Update position
-    car.y += car.velocityY;
 }
 
 function jump() {
     console.log('Jump function called! gameRunning:', gameRunning, 'car.jumping:', car.jumping, 'car.y:', car.y, 'groundY:', groundY);
-    
-    // Visual feedback
-    jumpAttempted = true;
-    jumpAttemptTimer = 10;
     
     if (gameRunning && !car.jumping) {
         // Just jump without ground check
@@ -271,8 +261,17 @@ function createObstacle() {
 }
 
 function updateObstacles() {
-    // Disabled - keeping the road clean
-    // No obstacles will be created or moved
+    // Move obstacles
+    obstacles = obstacles.filter(obstacle => {
+        obstacle.x -= obstacleSpeed;
+        return obstacle.x + obstacle.width > 0;
+    });
+    
+    // Create new obstacles (with initial delay)
+    obstacleTimer++;
+    if (obstacleTimer >= obstacleStartDelay && (obstacleTimer - obstacleStartDelay) % obstacleInterval === 0) {
+        createObstacle();
+    }
 }
 
 function updateBackground() {
@@ -373,25 +372,28 @@ function gameLoop() {
     // Draw ground
     drawGround();
     
-    // Update and draw obstacles (disabled - clean road)
-    // updateObstacles();
-    // obstacles.forEach(obstacle => drawObstacle(obstacle));
+    // Update and draw obstacles
+    updateObstacles();
+    obstacles.forEach(obstacle => drawObstacle(obstacle));
     
     // Update and draw car
     updateCar();
     drawCar();
     
-    // Check collision (disabled - no obstacles)
-    // if (checkCollision()) {
-    //     gameOver();
-    //     return;
-    // }
-    
-    // Increase score over time instead
-    if (gameRunning && Math.floor(Date.now() / 100) % 10 === 0) {
-        score++;
-        scoreElement.textContent = score;
+    // Check collision
+    if (checkCollision()) {
+        gameOver();
+        return;
     }
+    
+    // Increase score for each obstacle passed
+    obstacles.forEach(obstacle => {
+        if (obstacle.x + obstacle.width < car.x && !obstacle.passed) {
+            score += 10;
+            scoreElement.textContent = score;
+            obstacle.passed = true;
+        }
+    });
     
     requestAnimationFrame(gameLoop);
 }

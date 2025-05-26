@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mad Crab Game - Mad Lad Studios</title>
+    <title>Mad Fire Truck Game - Mad Lad Studios</title>
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Google AdSense -->
@@ -15,7 +15,7 @@
         .game-container {
             background: transparent !important;
             padding: 0 !important;
-            max-width: none !important;
+            position: relative !important;
         }
         
         .game-container h1 {
@@ -23,50 +23,29 @@
         }
         
         #gameCanvas {
-            border: 3px solid #F97316;
+            border: 3px solid #EF4444;
             border-radius: 0.5rem;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            background: #1a1a2e;
+            display: block;
+            margin: 0 auto;
         }
         
         .game-info {
             background: transparent !important;
-            border: none !important;
-            padding: 0 !important;
-            margin-bottom: 1rem !important;
-        }
-        
-        .game-info > div {
-            background: linear-gradient(to right, #F97316, #EF4444) !important;
-            color: white !important;
-            padding: 0.5rem 1.5rem !important;
-            border-radius: 9999px !important;
-            font-weight: bold !important;
-            display: inline-block !important;
-            margin: 0 0.5rem !important;
-        }
-        
-        .controls {
-            background: transparent !important;
+            text-align: center !important;
             margin-top: 1rem !important;
-            padding: 0 !important;
         }
         
-        .btn {
-            background: linear-gradient(to right, #F97316, #EF4444) !important;
-            color: white !important;
-            padding: 0.75rem 2rem !important;
-            border-radius: 0.5rem !important;
+        .game-info p {
+            color: #374151 !important;
+            font-size: 1.125rem !important;
+            margin: 0.5rem 0 !important;
+        }
+        
+        #score {
+            color: #EF4444 !important;
             font-weight: bold !important;
-            border: none !important;
-            cursor: pointer !important;
-            transition: all 0.3s !important;
-            margin: 0.5rem !important;
-        }
-        
-        .btn:hover {
-            transform: scale(1.05) !important;
-            box-shadow: 0 5px 15px rgba(249, 115, 22, 0.4) !important;
+            font-size: 1.25rem !important;
         }
     </style>
 </head>
@@ -90,11 +69,11 @@
     <div class="container mx-auto px-4 py-8">
         <div class="text-center mb-8">
             <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 flex items-center justify-center gap-4">
-                <span class="text-6xl">🦀</span>
-                Mad Crab Game
-                <span class="text-6xl">🦀</span>
+                <span class="text-6xl">🚒</span>
+                Mad Fire Truck Game
+                <span class="text-6xl">🚒</span>
             </h1>
-            <p class="text-xl text-white/90">Collect pearls and avoid the sharks!</p>
+            <p class="text-xl text-white/90">Drive the fire truck and save the day!</p>
         </div>
 
         <!-- Ad Space - Top -->
@@ -104,7 +83,7 @@
                 <ins class="adsbygoogle"
                      style="display:block"
                      data-ad-client="ca-pub-YOUR-PUBLISHER-ID"
-                     data-ad-slot="YOUR-AD-SLOT-ID-5"
+                     data-ad-slot="YOUR-AD-SLOT-ID-7"
                      data-ad-format="auto"
                      data-full-width-responsive="true"></ins>
                 <script>
@@ -116,17 +95,11 @@
         <!-- Game Container -->
         <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-2xl p-8 max-w-5xl mx-auto">
             <div class="game-container">
-                <div class="game-info text-center mb-4">
-                    <div class="score">Score: <span id="score">0</span></div>
-                    <div class="lives">Lives: <span id="lives">3</span></div>
-                    <div class="level">Level: <span id="level">1</span></div>
-                </div>
-                <canvas id="gameCanvas" width="800" height="600" class="mx-auto block"></canvas>
-                <div class="controls text-center mt-6">
-                    <p class="text-lg mb-2">Use Arrow Keys or WASD to move the crab!</p>
-                    <p class="text-lg mb-4">Collect pearls 🦪 and avoid the sharks 🦈!</p>
-                    <button id="startBtn" class="btn">Start Game</button>
-                    <button id="pauseBtn" class="btn" style="display: none;">Pause</button>
+                <canvas id="gameCanvas"></canvas>
+                <div class="game-info">
+                    <h1>Mad Fire Truck Game</h1>
+                    <p>Use WASD keys to drive the fire truck!</p>
+                    <p>Score: <span id="score">0</span></p>
                 </div>
             </div>
         </div>
@@ -136,24 +109,24 @@
             <h2 class="text-2xl font-bold mb-4 text-gray-800">How to Play</h2>
             <ul class="space-y-2 text-gray-700">
                 <li class="flex items-start">
-                    <span class="text-orange-500 mr-2">•</span>
-                    Use Arrow Keys or WASD to move your crab around
+                    <span class="text-red-500 mr-2">•</span>
+                    Use W to move forward
                 </li>
                 <li class="flex items-start">
-                    <span class="text-orange-500 mr-2">•</span>
-                    Collect pearls 🦪 to increase your score
+                    <span class="text-red-500 mr-2">•</span>
+                    Use A to turn left
                 </li>
                 <li class="flex items-start">
-                    <span class="text-orange-500 mr-2">•</span>
-                    Avoid the sharks 🦈 - they will cost you a life!
+                    <span class="text-red-500 mr-2">•</span>
+                    Use S to move backward
                 </li>
                 <li class="flex items-start">
-                    <span class="text-orange-500 mr-2">•</span>
-                    Complete levels by collecting enough pearls
+                    <span class="text-red-500 mr-2">•</span>
+                    Use D to turn right
                 </li>
                 <li class="flex items-start">
-                    <span class="text-orange-500 mr-2">•</span>
-                    Each level gets progressively harder!
+                    <span class="text-red-500 mr-2">•</span>
+                    Drive carefully and complete your missions!
                 </li>
             </ul>
         </div>
@@ -165,7 +138,7 @@
                 <ins class="adsbygoogle"
                      style="display:block"
                      data-ad-client="ca-pub-YOUR-PUBLISHER-ID"
-                     data-ad-slot="YOUR-AD-SLOT-ID-6"
+                     data-ad-slot="YOUR-AD-SLOT-ID-8"
                      data-ad-format="auto"
                      data-full-width-responsive="true"></ins>
                 <script>
@@ -181,11 +154,11 @@
                 <a href="mad-car-game.html" class="bg-white/90 backdrop-blur-sm rounded-lg px-6 py-3 font-bold text-blue-600 hover:bg-white transition">
                     🚗 Mad Car Game
                 </a>
+                <a href="mad-crab-game.html" class="bg-white/90 backdrop-blur-sm rounded-lg px-6 py-3 font-bold text-orange-600 hover:bg-white transition">
+                    🦀 Mad Crab Game
+                </a>
                 <a href="mad-racetrack-game.html" class="bg-white/90 backdrop-blur-sm rounded-lg px-6 py-3 font-bold text-green-600 hover:bg-white transition">
                     🏁 Mad Racetrack Game
-                </a>
-                <a href="mad-firetruck-game.html" class="bg-white/90 backdrop-blur-sm rounded-lg px-6 py-3 font-bold text-red-600 hover:bg-white transition">
-                    🚒 Mad Fire Truck Game
                 </a>
             </div>
         </div>
@@ -200,7 +173,7 @@
     </footer>
 
     <!-- Load the original game files -->
-    <link rel="stylesheet" href="mad-crab-game/style.css">
-    <script src="mad-crab-game/game.js"></script>
+    <link rel="stylesheet" href="mad-firetruck-game/style.css">
+    <script src="mad-firetruck-game/game.js"></script>
 </body>
 </html>
